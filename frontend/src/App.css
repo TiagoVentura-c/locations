@@ -15,8 +15,10 @@ html, body {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: rgb(9, 10, 9);
 }
 
 a {
   text-decoration: none;
 }
+
