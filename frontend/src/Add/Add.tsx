@@ -58,7 +58,7 @@ type Props = {
                 <div className='add-content-detail'>
                     <button className='add-btn' >Obter localização do dispositivo</button>
                     <text className='add-cord-content'>
-                        Suas cordenadas [ -2,7445; 4.2666 ]
+                     Coordenadas [ -2,7445; 4.2666 ]
                     </text>
                 </div>
                 <button className='add-btn-save' >Salvar</button>
