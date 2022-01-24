@@ -9,42 +9,31 @@ type dataProps = {
 }
 
 type listProps = {
-    countries: dataProps[]
+    countries: dataProps[];
+    onChangeResidence: (selectedResidence: Residence) => void
 }
 
-
-
-function SelectInput( {countries}: listProps){
+function SelectInput( {countries, onChangeResidence}: listProps){
 
     const [cities, setCities] = useState<string[]>(countries[0].cities);
     const [indexSelectedCountry, setIndexSelectedCountry] = useState(0);
 
-    const [selectedResidence, setSelectedResidence] = useState<Residence>({
-        country: countries[0].country,
-        city: countries[0].cities[0]
-    });
 
     const handleSelectCountry = (element: any) => {
-
-        selectedResidence.country= countries[element.currentTarget.selectedIndex].country
-        selectedResidence.city= countries[element.currentTarget.selectedIndex].cities[0]
-
+        onChangeResidence({
+            country: countries[element.currentTarget.selectedIndex].country,
+            city: countries[element.currentTarget.selectedIndex].cities[0]
+        })
         setIndexSelectedCountry(element.currentTarget.selectedIndex);
         setCities(countries[element.currentTarget.selectedIndex].cities);
-
-        console.log(selectedResidence);
     }
     
     const handleSelectCity = (element: any) => {
-        selectedResidence.city = element.currentTarget.value;
-
-        console.log(selectedResidence)
+        onChangeResidence({
+            country: countries[indexSelectedCountry].country,
+            city: element.currentTarget.value
+        })
     }     
-    
-    useEffect(()=>{
-        console.log(selectedResidence) 
-        
-    }, [])
     
     return(
         <div className='select-container'>

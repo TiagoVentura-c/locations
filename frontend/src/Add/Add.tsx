@@ -4,7 +4,8 @@ import "./styles.css"
 import Input from "../components/Input";
 import SelectInput from '../components/SelectInput';
 import Location from '../components/Location';
-import { LocationData } from '../types';
+import { LocationData, Residence, User } from '../types';
+import { toast } from 'react-toastify';
 
 type Props = {
     nameInput: string;
@@ -45,23 +46,51 @@ type Props = {
         },
     ]
 
-    const [orderLocation, setLocation] = useState<LocationData>();
+    const [name, setName] = useState<string>('')
+
+    const user = useState<User>()
+
+    const [location, setLocation] = useState<LocationData>();
+    
+    const handleOnChange = (e: string) => {
+        setName(e)
+    }
+
+    const [redidence, setRedidence] = useState<Residence>({
+        country: data[0].country,
+        city: data[0].cities[0]
+    })
+
+    const handleSave = () => {
+        
+        if(name === ''){
+            toast.error("Defina seu nome")
+        }
+        if(location === undefined){
+            toast.error("Escolha sua localização")
+        }
+
+        if(name !== '' && location!==undefined){
+            toast.info("Sucesso")
+        }
+    }
 
     return(
         <div className='add-container'>
             <h3 className='add-title'>Insira seus dados:</h3>
             <div className='add-content'>
-                <Input nameInput='Nome' typeInput='text' />
-                <Input nameInput='Email' typeInput='email' />
-                <SelectInput countries={data} />
+                <Input nameInput='Nome' typeInput='text' handleOnChange={handleOnChange} />
+                <SelectInput onChangeResidence={redidence => setRedidence(redidence) } countries={data} />
+
                 <Location onChangeLocation={location => setLocation(location) } />
+
                 <div className='add-content-detail'>
                     <button className='add-btn' >Obter localização do dispositivo</button>
-                    <text className='add-cord-content'>
-                     Coordenadas [ -2,7445; 4.2666 ]
-                    </text>
+                    <p className='add-cord-content'>
+                        <strong>Coordenadas--</strong> [ {location?.latitude} ; {location?.longitude}]
+                    </p>
                 </div>
-                <button className='add-btn-save' >Salvar</button>
+                <button className='add-btn-save' onClick={handleSave} >Salvar</button>
             </div>
         </div>
     )

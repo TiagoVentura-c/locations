@@ -1,17 +1,22 @@
 import React from 'react';
+import { User } from '../types';
 
 import "./Users.css"
 
- function Users(){
+type Props = {
+    user: User
+    handleSelectUser: (id: number) => void
+}
+
+ function Users({user, handleSelectUser}: Props){
     return(
         <>
             <div className='user-titles'>
-                <h5>Tiago Ventura</h5>
-                <h5>tfj.ventura@gmail.com</h5>
+                <h5>{user.name}</h5>
                 
                 <div className='user-coord'>
-                    <h5>[-2,5445; -2,454]</h5>
-                    <button className='user-btn-see'>Ver no mapa</button>
+                    <h5>[{user.locationData.latitude}; {user.locationData.longitude}]</h5>
+                    <button className='user-btn-see' onClick={() => handleSelectUser(user.id)}>Ver no mapa</button>
                 </div>
                 
             </div>

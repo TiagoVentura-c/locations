@@ -7,3 +7,10 @@ export type LocationData = {
     longitude: number;
     address: string;
 }
+
+export type User = {
+    id: number;
+    name: string;
+    residence: Residence;
+    locationData: LocationData;
+}

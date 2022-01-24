@@ -55,9 +55,7 @@ function Location({ onChangeLocation }: Props) {
           longitude: place.position.lng,
           address: place.label!
         }); 
-      };
-      
- 
+      };    
 
     return (
         <div className='location-container'>

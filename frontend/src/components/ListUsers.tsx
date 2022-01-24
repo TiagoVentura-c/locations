@@ -1,11 +1,27 @@
 import React from 'react'
+import { User } from '../types';
 import Users from './Users';
 
- function ListUsers(){
+type Props = {
+    users: User[]
+    handleSelectUser: (id: number) => void
+}
+
+
+
+ function ListUsers({ users, handleSelectUser }: Props){
     return(
         <div className='list-user-container'>
             <div className='list-user-content'>
-                <Users />
+                {
+                    users.map(user => (
+                   <Users 
+                        user={user}
+                        handleSelectUser={handleSelectUser}
+                   /> 
+                   ))
+                }
+                
             </div>
         </div>
     )

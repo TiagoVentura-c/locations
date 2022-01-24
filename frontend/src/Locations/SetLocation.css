@@ -1,0 +1,11 @@
+.location-titles-container{
+    margin-top: 10px;
+}
+
+.location-content p {
+    color: #FFF;
+    margin-left: 10px;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
