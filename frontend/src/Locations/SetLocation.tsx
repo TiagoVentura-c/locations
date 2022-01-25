@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { fetchLocalMapBox } from '../api';
@@ -27,13 +27,20 @@ function SetLocaltion({user}: Props) {
         }
     });
 
+    useEffect(()=>{
+        setAddress({
+            position:{
+                lat: user.locationData.latitude,
+                lng: user.locationData.longitude
+            }
+        })
+    }, [user])
+
     return(
         <div className='location-container'>
             <div className='location-content'>
                 <div className='location-titles-container'>
                 <p><strong>Nome:</strong> {user.name}</p>
-                <p><strong>País:</strong> {user.residence.country}</p>
-                <p><strong>Cidade:</strong> {user.residence.city}</p>
             </div>
 
                 <div className='filter-container'>

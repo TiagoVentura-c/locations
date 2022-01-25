@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Add from './Add/Add';
-import Home from './Home/Home';
 import Locations from './Locations/Locations';
 import Navbar from './Navbar/Navbar';
+import HomeAdmin from './Admin/HomeAdmin'
+import Home from './Home/Home'
 
 function Routes(){
     return(
@@ -18,6 +19,9 @@ function Routes(){
                 </Route>
                 <Route path="/locations">
                     <Locations />
+                </Route>
+                <Route path="/admin">
+                    <HomeAdmin />
                 </Route>
             </Switch>
         </BrowserRouter>

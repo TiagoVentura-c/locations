@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Table from '../Admin/Components/Table/Table';
 import ListUsers from '../components/ListUsers';
 import { User } from '../types';
 import SetLocaltion from './SetLocation';
@@ -15,6 +16,15 @@ type Place = {
 
  function Locations(){
 
+    /**
+     * <div className='locations-titles'>
+                    <div className='locations-content-title'><h4>Nome</h4></div>
+                    <div className='locations-content-title'><h4>Coordenadas</h4></div>
+                </div>
+                <div className='locations-line'></div>
+                <ListUsers users={users} handleSelectUser={handleSelectUser} />
+     */
+
     const [users, setUsers] = useState<User[]>([
         {
             id: 1,
@@ -26,7 +36,7 @@ type Place = {
             locationData: {
                 address: 'Angola, luanda, talatona',
                 latitude: -8.9146692,
-                longitude: -8.9146692,
+                longitude: 13.1572451,
             }
         },
         {
@@ -38,8 +48,8 @@ type Place = {
             },
             locationData: {
                 address: 'Brasil, rio',
-                latitude: -1.77,
-                longitude: 3.66
+                latitude: -12.58,
+                longitude: 13.40778
             }
         },
         {
@@ -65,21 +75,13 @@ type Place = {
                 setUserSelected(user);
             }
         })
-    }
-
+    } 
 
     return(
         <div className='locations-container'>
-            <h3 className='locations-title'>Localizações cadastradas:</h3>
             <div className='locations-content'>
-                <div className='locations-titles'>
-                    <div className='locations-content-title'><h4>Nome</h4></div>
-                    <div className='locations-content-title'><h4>Coordenadas</h4></div>
-                </div>
-                <div className='locations-line'></div>
-                <ListUsers users={users} handleSelectUser={handleSelectUser} />         
-                <SetLocaltion user={userSelected} />
-                            
+                <Table users={users} handleSelectUser={handleSelectUser} /> 
+                <SetLocaltion user={userSelected} />                            
             </div>
         </div>
     )

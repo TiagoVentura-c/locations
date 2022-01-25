@@ -75,6 +75,8 @@ type Props = {
         }
     }
 
+    
+
     return(
         <div className='add-container'>
             <h3 className='add-title'>Insira seus dados:</h3>
@@ -82,14 +84,7 @@ type Props = {
                 <Input nameInput='Nome' typeInput='text' handleOnChange={handleOnChange} />
                 <SelectInput onChangeResidence={redidence => setRedidence(redidence) } countries={data} />
 
-                <Location onChangeLocation={location => setLocation(location) } />
-
-                <div className='add-content-detail'>
-                    <button className='add-btn' >Obter localização do dispositivo</button>
-                    <p className='add-cord-content'>
-                        <strong>Coordenadas--</strong> [ {location?.latitude} ; {location?.longitude}]
-                    </p>
-                </div>
+                <Location onChangeLocation={location => setLocation(location)} />
                 <button className='add-btn-save' onClick={handleSave} >Salvar</button>
             </div>
         </div>

@@ -57,6 +57,25 @@ function Location({ onChangeLocation }: Props) {
         }); 
       };    
 
+      function handleGetLocation(){
+        if( !('geolocation' in navigator) ) {
+            alert("Navegador não tem suporte API Geolocation");
+        }else{
+            navigator.geolocation.getCurrentPosition(function(position) {
+        
+                var latitude   = position.coords.latitude;
+                var longitude  = position.coords.longitude;
+                console.log(latitude, longitude)
+                setAddress({
+                    position:{
+                        lat: latitude,
+                        lng: longitude
+                    }
+                })
+        });
+        }
+     }
+
     return (
         <div className='location-container'>
             <div className='location-content'>
@@ -85,7 +104,15 @@ function Location({ onChangeLocation }: Props) {
                             </Popup>
                         </Marker>
                 </MapContainer>
+
+                <div className='add-content-detail'>
+                    <button onClick={handleGetLocation} className='add-btn' >Obter localização do dispositivo</button>
+                    <p className='add-cord-content'>
+                        <strong>Coordenadas--</strong> [{ address.position.lat} ; {address.position.lng}]
+                    </p>
+                </div>
             </div>
+            
         </div>
     )
 }
