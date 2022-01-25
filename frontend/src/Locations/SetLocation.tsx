@@ -42,10 +42,7 @@ function SetLocaltion({user}: Props) {
                 <div className='location-titles-container'>
                 <p><strong>Nome:</strong> {user.name}</p>
             </div>
-
-                <div className='filter-container'>
-                    
-                </div>
+                
                 <MapContainer 
                     center={address.position} 
                     zoom={13} 
@@ -61,6 +58,7 @@ function SetLocaltion({user}: Props) {
                             </Popup>
                         </Marker>
                 </MapContainer>
+
             </div>
         </div>
     )

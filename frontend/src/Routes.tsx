@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Add from './Add/Add';
 import Locations from './Locations/Locations';
 import Navbar from './Navbar/Navbar';
-import HomeAdmin from './Admin/HomeAdmin'
+import HomeAdmin from './Admin/Home'
 import Home from './Home/Home'
 
 function Routes(){

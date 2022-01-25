@@ -15,16 +15,7 @@ type Place = {
 }
 
  function Locations(){
-
-    /**
-     * <div className='locations-titles'>
-                    <div className='locations-content-title'><h4>Nome</h4></div>
-                    <div className='locations-content-title'><h4>Coordenadas</h4></div>
-                </div>
-                <div className='locations-line'></div>
-                <ListUsers users={users} handleSelectUser={handleSelectUser} />
-     */
-
+    
     const [users, setUsers] = useState<User[]>([
         {
             id: 1,
