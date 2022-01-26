@@ -9,6 +9,11 @@ type Props = {
     user: User;
 }
 
+const initialPosition = {
+    lat: -8.83333, 
+    lng: 13.23333
+}
+
 function SetLocaltion({user}: Props) {
     
     type Place = {
@@ -20,10 +25,7 @@ function SetLocaltion({user}: Props) {
     }
 
     const [address, setAddress] = useState<Place>({
-        position: {
-            lat: user.locationData.latitude,
-            lng: user.locationData.longitude
-        }
+        position: initialPosition
     });
 
     useEffect(()=>{

@@ -68,6 +68,7 @@ import { postUsers } from '../api';
                     toast.error("Erro ao salvar")
                 })
                 setName('')
+                
         }
     }
 

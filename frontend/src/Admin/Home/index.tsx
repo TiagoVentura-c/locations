@@ -38,7 +38,7 @@ function HomeAdmin () {
 
     const handleSelectUser = (id: number) => {
       for(var i =0; i < users.length; i++){
-        if(users[0].id === id){
+        if(users[i].id === id){
             setUserSelected(users[i]);
         }
     }

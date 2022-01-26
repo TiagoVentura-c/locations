@@ -20,9 +20,9 @@ function SelectInput( {onChangeResidence}: listProps){
 
     const[countries, setContries] = useState<Props[]>([
         {
-            country: "Afghanistan",
+            country: "",
             cities: [
-                "Shar",
+                "",
             ]
         }
     ])
@@ -44,6 +44,9 @@ function SelectInput( {onChangeResidence}: listProps){
     const [cities, setCities] = useState<string[]>(countries[0].cities);
     const [indexSelectedCountry, setIndexSelectedCountry] = useState(0);
 
+    useEffect(()=>{
+        setCities(countries[indexSelectedCountry].cities);
+    }, [indexSelectedCountry])
 
     const handleSelectCountry = (element: any) => {
         onChangeResidence({
@@ -51,7 +54,7 @@ function SelectInput( {onChangeResidence}: listProps){
             city: countries[element.currentTarget.selectedIndex].cities[0]
         })
         setIndexSelectedCountry(element.currentTarget.selectedIndex);
-        setCities(countries[indexSelectedCountry].cities);
+        setCities(countries[element.currentTarget.selectedIndex].cities);
     }
     
     const handleSelectCity = (element: any) => {

@@ -27,8 +27,8 @@ import "./styles.css"
         name: "",
         locationData:{
             address: '',
-            longitude: -8.914669,
-            latitude: 13.157245
+            longitude: -8.83333,
+            latitude: 13.23333
         },
         residence:{
             city: "",
