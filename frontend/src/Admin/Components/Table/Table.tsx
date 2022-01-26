@@ -18,7 +18,6 @@ function Table({ users, handleSelectUser }: Props) {
         <div className='table-content'>
       <MaterialTable
         style={{
-          backgroundColor: 'rgb(185, 172, 162)',
           border: '1px solid rgb(229, 153, 0)'
         }}
         title="Localizações cadastradas"

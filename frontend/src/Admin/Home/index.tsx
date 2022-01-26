@@ -60,9 +60,9 @@ function HomeAdmin () {
 
   function handleSearch(){
     
-    const startDate = state.startDate?.toISOString().split('T')[0]
+    const startDate = state.startDate?.toISOString().split('T')[0] as string
     const endDate = state.endDate?.toISOString().split('T')[0]
-
+    
     fetchUsersDate(startDate as string, endDate as string)
       .then(response => {
           setUsers(response.data)

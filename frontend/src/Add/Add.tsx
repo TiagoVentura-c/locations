@@ -46,20 +46,15 @@ import { postUsers } from '../api';
         console.log(redidence)
         if(name === ''){
             toast.error("Defina seu nome")
-        }
-        if(location === undefined){
-            toast.error("Escolha sua localização")
-        }
+        }else
 
         if(name !== '' && location!==undefined){
-
             const payload: User = {
                 id: 0,
                 name: name,
                 locationData: location,
                 residence: redidence
             }
-
             postUsers(payload)
                 .then(response => {
                     toast.info("Sucesso")
@@ -68,8 +63,8 @@ import { postUsers } from '../api';
                     toast.error("Erro ao salvar")
                 })
                 setName('')
-                
         }
+
     }
 
     return(
