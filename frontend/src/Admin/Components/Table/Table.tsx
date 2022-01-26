@@ -1,6 +1,6 @@
 import React from 'react';
-import MaterialTable, { MaterialTableProps }  from 'material-table'
-import { Button, styled } from '@material-ui/core';
+import MaterialTable, {  }  from 'material-table'
+import { Button } from '@material-ui/core';
 
 import "./styles.css"
 import { User } from '../../../types';

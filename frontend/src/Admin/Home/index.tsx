@@ -37,11 +37,11 @@ function HomeAdmin () {
   const [show, setShow] = useState<boolean>(false);
 
     const handleSelectUser = (id: number) => {
-      users.map(user => {
-          if(user.id === id){
-              setUserSelected(user);
-          }
-      })
+      for(var i =0; i < users.length; i++){
+        if(users[0].id === id){
+            setUserSelected(users[i]);
+        }
+    }
   }
 
   const [userSelected, setUserSelected] = useState<User>({
