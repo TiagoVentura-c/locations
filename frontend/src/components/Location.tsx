@@ -72,6 +72,13 @@ function Location({ onChangeLocation }: Props) {
                         lng: longitude
                     }
                 })
+                
+                onChangeLocation({
+                    latitude: latitude,
+                    longitude: longitude,
+                    address:''
+                  })
+
         });
         }
 
