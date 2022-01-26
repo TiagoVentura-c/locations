@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { fetchLocalMapBox } from '../api';
-import { LocationData, User } from '../types'; 
+import { User } from '../types'; 
 
 import "./SetLocation.css"
 
@@ -14,12 +13,12 @@ function SetLocaltion({user}: Props) {
     
     type Place = {
         label?: string;
-        value?: string;
         position:{
             lat: number;
             lng: number;
         }
     }
+
     const [address, setAddress] = useState<Place>({
         position: {
             lat: user.locationData.latitude,

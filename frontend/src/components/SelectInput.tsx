@@ -1,19 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { fetchCountries } from '../api';
 import { Residence } from '../types';
 
 import "./SelectInput.css"
 
-type dataProps = {
+type Props = {
     country: string;
     cities: string[];
 }
 
+
 type listProps = {
-    countries: dataProps[];
+   // countries: dataProps[];
     onChangeResidence: (selectedResidence: Residence) => void
 }
 
-function SelectInput( {countries, onChangeResidence}: listProps){
+function SelectInput( {onChangeResidence}: listProps){
+
+    const[countries, setContries] = useState<Props[]>([
+        {
+            country: "Afghanistan",
+            cities: [
+                "Shar",
+            ]
+        }
+    ])
+
+    useEffect(()=> {
+/***/
+         function fetch() {
+             fetchCountries()
+            .then(response => {
+                setContries(response.data.data)
+                console.log(response.data)
+            })
+            .catch(error=>{
+                toast.error("Erro ao carregar países")
+                console.log(error)
+            })
+        } 
+
+           fetch(); 
+        
+    }, [])
 
     const [cities, setCities] = useState<string[]>(countries[0].cities);
     const [indexSelectedCountry, setIndexSelectedCountry] = useState(0);

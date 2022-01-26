@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import "./styles.css"
 import Input from "../components/Input";
@@ -6,18 +6,17 @@ import SelectInput from '../components/SelectInput';
 import Location from '../components/Location';
 import { LocationData, Residence, User } from '../types';
 import { toast } from 'react-toastify';
-
-type Props = {
-    nameInput: string;
-    typeInput: string;
-}
+import { postUsers } from '../api';
 
  function Add(){
+
+    
 
     type Props = {
             country: string;
             cities: string[];
     }
+
 
     const data: Props[] = [
         {
@@ -28,28 +27,10 @@ type Props = {
                 "Wazir Akbar Khan",
                 "Xxxx"
             ]
-        },
-        {
-            country: "Angola",
-            cities: [
-                "Malanje",
-                "Cabinda",
-                "Luanda"
-            ]
-        },
-        {
-            country: "Brasil",
-            cities: [
-                "Rio de Janeiro",
-                "Brasilia"
-            ]
-        },
+        }
     ]
 
     const [name, setName] = useState<string>('')
-
-    const user = useState<User>()
-
     const [location, setLocation] = useState<LocationData>();
     
     const handleOnChange = (e: string) => {
@@ -62,7 +43,7 @@ type Props = {
     })
 
     const handleSave = () => {
-        
+        console.log(redidence)
         if(name === ''){
             toast.error("Defina seu nome")
         }
@@ -71,18 +52,31 @@ type Props = {
         }
 
         if(name !== '' && location!==undefined){
-            toast.info("Sucesso")
+
+            const payload: User = {
+                id: 0,
+                name: name,
+                locationData: location,
+                residence: redidence
+            }
+
+            postUsers(payload)
+                .then(response => {
+                    toast.info("Sucesso")
+                })
+                .catch(error => {
+                    toast.error("Erro ao salvar")
+                })
+                setName('')
         }
     }
-
-    
 
     return(
         <div className='add-container'>
             <h3 className='add-title'>Insira seus dados:</h3>
             <div className='add-content'>
                 <Input nameInput='Nome' typeInput='text' handleOnChange={handleOnChange} />
-                <SelectInput onChangeResidence={redidence => setRedidence(redidence) } countries={data} />
+                <SelectInput onChangeResidence={redidence => setRedidence(redidence) } />
 
                 <Location onChangeLocation={location => setLocation(location)} />
                 <button className='add-btn-save' onClick={handleSave} >Salvar</button>

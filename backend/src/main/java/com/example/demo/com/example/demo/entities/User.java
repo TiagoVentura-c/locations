@@ -2,18 +2,14 @@ package com.example.demo.com.example.demo.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
+import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +23,10 @@ public class User implements Serializable {
 	private Long id;
 	
 	private String name;
-	private String country;
-	private String city;
-	private Instant moment;
+	private LocalDate moment;
+	
+	@Embedded
+	private Residence residence;
 	
 	@Embedded
 	private LocationData locationData;	
@@ -59,6 +56,16 @@ public class User implements Serializable {
 		this.locationData = locationData;
 	}
 	
+	
+	
+	public Residence getResidence() {
+		return residence;
+	}
+
+	public void setResidence(Residence residence) {
+		this.residence = residence;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -75,27 +82,11 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public Instant getMoment() {
+	public LocalDate getMoment() {
 		return moment;
 	}
 
-	public void setMoment(Instant moment) {
+	public void setMoment(LocalDate moment) {
 		this.moment = moment;
 	}
 	
