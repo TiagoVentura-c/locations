@@ -28,19 +28,15 @@ function SelectInput( {onChangeResidence}: listProps){
     ])
 
     useEffect(()=> {
-/***/
          function fetch() {
              fetchCountries()
             .then(response => {
                 setContries(response.data.data)
-                console.log(response.data)
             })
             .catch(error=>{
                 toast.error("Erro ao carregar países")
-                console.log(error)
             })
         } 
-
            fetch(); 
         
     }, [])
@@ -55,7 +51,7 @@ function SelectInput( {onChangeResidence}: listProps){
             city: countries[element.currentTarget.selectedIndex].cities[0]
         })
         setIndexSelectedCountry(element.currentTarget.selectedIndex);
-        setCities(countries[element.currentTarget.selectedIndex].cities);
+        setCities(countries[indexSelectedCountry].cities);
     }
     
     const handleSelectCity = (element: any) => {
