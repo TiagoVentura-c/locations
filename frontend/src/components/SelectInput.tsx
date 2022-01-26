@@ -44,10 +44,7 @@ function SelectInput( {onChangeResidence}: listProps){
     const [cities, setCities] = useState<string[]>(countries[0].cities);
     const [indexSelectedCountry, setIndexSelectedCountry] = useState(0);
 
-    useEffect(()=>{
-        setCities(countries[indexSelectedCountry].cities);
-    }, [indexSelectedCountry])
-
+    
     const handleSelectCountry = (element: any) => {
         onChangeResidence({
             country: countries[element.currentTarget.selectedIndex].country,
@@ -78,7 +75,7 @@ function SelectInput( {onChangeResidence}: listProps){
 
                 <div className='select-area'>
                     <label htmlFor="select-selects" className='select-name' >Cidade:</label>
-                    <select name="select-city" className="select-select" value={countries[indexSelectedCountry].cities[0]} onChange={(element) => handleSelectCity(element) }>
+                    <select name="select-city" className="select-select"  onChange={(element) => handleSelectCity(element) }>
                         { cities.map(city => (
                             <option className='select-option' value={city} >{city}</option>
                         ))}
