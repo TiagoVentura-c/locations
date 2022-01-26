@@ -35,7 +35,7 @@ function Table({ users, handleSelectUser }: Props) {
           {
             icon: 'save',
             tooltip: 'Save User',
-            onClick: (event, rowData) => handleSelectUser(((rowData as User).id))
+            onClick: (event, rowData) => {handleSelectUser(((rowData as User).id)); console.log(rowData as User)}
           }
         ]}
         components={{
